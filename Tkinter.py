@@ -7,6 +7,7 @@ icon = PhotoImage(file="icon1.png")
 win.iconphoto(False, icon)
 win.geometry("303x285")
 win.config(bg="#ab2200")
+win.resizable(width=False, height=False)
 
 # text "calculator"
 text = Label(text="calculator premium", bg="#aa6666", padx=80, pady=3).grid(row=1, column=1, columnspan=4)
