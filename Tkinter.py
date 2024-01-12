@@ -3,10 +3,11 @@ from tkinter import *
 # window/icon setting
 win = Tk()
 win.title("calculator")
-icon = PhotoImage(file="icon1.png")
-win.iconphoto(False, icon)
+#icon = PhotoImage(file="icon1.png")
+#win.iconphoto(False, icon)
 win.geometry("303x285")
 win.config(bg="#ab2200")
+win.resizable(width=False, height=False)
 
 # text "calculator"
 text = Label(text="calculator premium", bg="#aa6666", padx=80, pady=3).grid(row=1, column=1, columnspan=4)
@@ -23,22 +24,31 @@ def add_char(char):
 
 # calculating entry
 def calculate():
-    value2 = calc.get()
-    answer = eval(str(value2))
-    calc.delete(0, END)
-    calc.insert(0, answer)
+    try:
+        value2 = calc.get()
+        answer = eval(str(value2))
+        calc.delete(0, END)
+        calc.insert(0, answer)
+    except:
+        calc.delete(0, END)
+        calc.insert(0, "error")
 
-# buttons
-Button(text="1", padx=4, pady=4, bd=5, command=lambda: add_char(1)).grid(row=3, column=1, stick="wens", padx=7, pady=7)
-Button(text="2", padx=4, pady=4, bd=5, command=lambda: add_char(2)).grid(row=3, column=2, stick="wens", padx=7, pady=7)
-Button(text="3", padx=4, pady=4, bd=5, command=lambda: add_char(3)).grid(row=3, column=3, stick="wens", padx=7, pady=7)
-Button(text="4", padx=4, pady=4, bd=5, command=lambda: add_char(4)).grid(row=4, column=1, stick="wens", padx=7, pady=7)
-Button(text="5", padx=4, pady=4, bd=5, command=lambda: add_char(5)).grid(row=4, column=2, stick="wens", padx=7, pady=7)
-Button(text="6", padx=4, pady=4, bd=5, command=lambda: add_char(6)).grid(row=4, column=3, stick="wens", padx=7, pady=7)
-Button(text="7", padx=4, pady=4, bd=5, command=lambda: add_char(7)).grid(row=5, column=1, stick="wens", padx=7, pady=7)
-Button(text="8", padx=4, pady=4, bd=5, command=lambda: add_char(8)).grid(row=5, column=2, stick="wens", padx=7, pady=7)
-Button(text="9", padx=4, pady=4, bd=5, command=lambda: add_char(9)).grid(row=5, column=3, stick="wens", padx=7, pady=7)
-Button(text="0", padx=4, pady=4, bd=5, command=lambda: add_char(0)).grid(row=6, column=2, stick="wens", padx=7, pady=7)
+def make_btn(text, row, clmn):
+    Button(text=text, padx=4, pady=4, bd=5, command=lambda: add_char(text)).grid(row=row, column=clmn, stick="wens", padx=7, pady=7)
+
+make_btn(1, 3, 1)
+make_btn(2, 3, 2)
+make_btn(3, 3, 3)
+
+make_btn(4, 4, 1)
+make_btn(5, 4, 2)
+make_btn(6, 4, 3)
+
+make_btn(7, 5, 1)
+make_btn(8, 5, 2)
+make_btn(9, 5, 3)
+
+make_btn(0, 6, 2)
 
 Button(text="=", padx=4, pady=4, bd=5, bg="#ffaf00", command=calculate).grid(row=6, column=3,
                                                                               stick="wens",
