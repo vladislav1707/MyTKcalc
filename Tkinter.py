@@ -10,7 +10,7 @@ win.config(bg="#ab2200")
 win.resizable(width=False, height=False)
 
 # text "calculator"
-text = Label(text="calculator premium", bg="#aa6666", padx=80, pady=3).grid(row=1, column=1, columnspan=4)
+text = Label(text="калькулятор", bg="#aa6666", padx=80, pady=3).grid(row=1, column=1, columnspan=4)
 
 # entry
 calc = Entry(font=("Arial", 15), bg="#a1a1a1", justify=RIGHT)
